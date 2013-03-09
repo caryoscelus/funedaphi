@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <action name="newmap">
+        <string name="mapType"/>
+        
+        <code>
+def newmap(mapType):
+    mapId = getEmptyMapId('{0}-'.format(mapType))
+    newMap = getMap(mapId)
+    newMap.notifyEmpty()
+    return newMap
+
+_return = newmap(mapType)
+        </code>
+    </action>
+</mod>

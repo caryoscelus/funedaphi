@@ -9,8 +9,8 @@ def startup():
     
     human.alive = True
     
-    map0 = getMap('test-0')
-    map0.notifyEmpty()
+    map0 = action('newmap', {'mapType':'test'})
+    
     map0.setAlive()
     spawn = map0.attr('centre')
     map0.putOn(spawn[0], spawn[1], 'monster', human)
