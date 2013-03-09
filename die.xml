@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <action name="die">
+        <object name="subject"/>
+        <string name="reason"/>
+        
+        <code>
+def die(subject, reason):
+    if not reason:
+        reason = 'unknown reason'
+    info('{0} died because: {1}'.format(subject, reason))
+    
+    subject.die()
+    
+    return True
+
+_return = die(subject, reason)
+        </code>
+    </action>
+</mod>

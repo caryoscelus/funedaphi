@@ -10,6 +10,10 @@
     <!-- tiles -->
     <require file="layers.xml"/>
     
+    <!-- actions -->
+    <require file="die.xml"/>
+    <require file="suicide.xml"/>
+    
     <!-- startup -->
     <require file="startup.xml"/>
 </mod>
