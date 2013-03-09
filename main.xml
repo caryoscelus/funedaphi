@@ -9,10 +9,12 @@
     
     <!-- tiles -->
     <require file="layers.xml"/>
+    <require file="ground.xml"/>
     
     <!-- actions -->
     <require file="die.xml"/>
     <require file="suicide.xml"/>
+    <require file="move.xml"/>
     
     <!-- startup -->
     <require file="startup.xml"/>
