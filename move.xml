@@ -23,6 +23,9 @@ def move(subject, dx, dy):
     except PositionTakenError:
         warning('trying to step on taken tile')
         return False
+    except TiledMapSizeError:
+        warning('trying to step out of the map')
+        return False
     return True
 
 _return = move(subject, dx, dy)

@@ -6,6 +6,7 @@
     <!-- map generation -->
     <require file="map-generator.xml"/>
     <require file="generate-test.xml"/>
+    <require file="airship.xml"/>
     
     <require file="newmap.xml"/>
     

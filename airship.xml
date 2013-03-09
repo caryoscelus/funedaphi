@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <action name="generate-airship">
+        <object name="newmap"/>
+        
+        <code>
+def generateAirship(newmap):
+    width = 32
+    height = 48
+    
+    newmap.resize(width, height)
+    
+    cx = int(width/2)
+    cy = int(height/2)
+    
+    # make ship outline
+    for y in range(height):
+        dx = width/height * math.sqrt((height/4+width/4)**2-(y-height/2)**2*width/height)
+        x1 = int(cx + dx)
+        x2 = int(cx - dx)
+        debug('COORD: {0}'.format((x2, y)))
+        try:
+            newmap.putOn(x1, y, 'ground', Entity({'class':'wall'}))
+            newmap.putOn(x2, y, 'ground', Entity({'class':'wall'}))
+        except TiledMapSizeError:
+            warning('can\'t place!')
+    
+    #action('map-fill-area', {'position':'ground', 'fill':'floor', 'limit':'wall', 'x':cx, 'y':cy})
+    newmap.setAttr('centre', (cx, cy))
+    newmap.setExist(True)
+    
+    info('new airship')
+    
+    return True
+
+_return = generateAirship(newmap)
+        </code>
+    </action>
+</mod>
