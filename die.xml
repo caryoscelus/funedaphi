@@ -8,7 +8,7 @@
 def die(subject, reason):
     if not reason:
         reason = 'unknown reason'
-    info('{0} died because: {1}'.format(subject, reason))
+    info('{0} died because: {1}'.format(subject.attr('class'), reason))
     
     subject.die()
     

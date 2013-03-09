@@ -2,19 +2,22 @@
 <mod>
     <action name="startup">
         <code>
-human = Entity({'class':'human', 'hp':10, 'hungry':0, 'maxHungry':5},
-               {'weapon':None, 'inv':[]},
-               ['weapon', 'inv'])
+def startup():
+    human = Entity({'class':'human', 'hp':10, 'hungry':0, 'maxHungry':5},
+                {'weapon':None, 'inv':[]},
+                ['weapon', 'inv'])
+    
+    human.alive = True
+    
+    map0 = getMap(0)
+    map0.notifyEmpty()
+    map0.setAlive()
+    spawn = map0.attr('centre')
+    map0.putOn(spawn[0], spawn[1], 'monster', human)
+    
+    return human
 
-human.alive = True
-
-map0 = getMap(0)
-map0.notifyEmpty()
-map0.setAlive()
-spawn = map0.attr('centre')
-map0.putOn(spawn[0], spawn[1], 'monster', human)
-
-_return = human
+_return = startup()
         </code>
     </action>
 </mod>
