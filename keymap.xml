@@ -5,5 +5,9 @@
             <arg name="subject" value="entity"/>
             <bind key="X"/>
         </action>
+        <action name="use-here">
+            <arg name="subject" value="entity"/>
+            <bind key="A"/>
+        </action>
     </keymap>
 </mod>

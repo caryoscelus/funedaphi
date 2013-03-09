@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mod>
+    <map source="class" target="use-action">
+        <value in="portal" out="use-portal"/>
+    </map>
+    
     <action name="make-portal">
         <!-- use x=-1, y=-1 to determine them dynamically -->
         <!-- don't specify mapId to make portal to new map -->
@@ -20,18 +24,19 @@ _return = makePortal(mapId, mapType, x, y)
     </action>
     
     <action name="use-portal">
-        <object name="portal"/>
         <object name="subject"/>
+        <object name="object"/>
         <code>
-def usePortal(portal, subject):
-    mapId = portal.attr('targetMap')
+def usePortal(subject, object):
+    mapId = subject.attr('targetMap')
     newMap = getMap(mapId)
-    tx, ty = portal.attr('tx'), portal.attr('ty')
+    newMap.notifyEmpty()
+    tx, ty = subject.attr('tx'), subject.attr('ty')
     if tx &lt; 0 or ty &lt; 0:
         tx, ty = newMap.attr('centre')
-    return action('travel', {'subject':subject, 'mapId':mapId, 'x':tx, 'y':ty})
+    return action('travel', {'subject':object, 'mapId':mapId, 'x':tx, 'y':ty})
 
-_return = usePortal(portal, subject)
+_return = usePortal(subject, object)
         </code>
     </action>
 </mod>

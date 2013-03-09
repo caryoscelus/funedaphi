@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <action name="use">
+        <object name="subject"/>
+        <object name="object"/>
+        <code>
+def use(subject, object):
+    act = subject.attr('use-action')
+    return action(act, {'subject':subject, 'object':object})
+
+_return = use(subject, object)
+        </code>
+    </action>
+    
+    <action name="use-here">
+        <object name="subject"/>
+        <code>
+def useHere(subject):
+    tile = subject.getTile()
+    feature = tile.get('feature')
+    if not feature:
+        info('nothing to use on this tile')
+        return False
+    
+    return action('use', {'subject':feature, 'object':subject})
+
+_return = useHere(subject)
+        </code>
+    </action>
+</mod>

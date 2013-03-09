@@ -2,7 +2,7 @@
 <mod>
     <action name="travel">
         <object name="subject"/>
-        <integer name="mapId"/>
+        <string name="mapId"/>
         <integer name="x"/>
         <integer name="y"/>
         <code>
@@ -12,6 +12,8 @@ newMap = getMap(mapId)
 oldMap.removeFromMap(subject)
 try:
     newMap.putOn(x, y, oldPos, subject)
+    newMap.setAlive()
+    oldMap.setAlive(False)
 except TiledMapSizeError:
     debug('user traveled to non-existant map')
         </code>

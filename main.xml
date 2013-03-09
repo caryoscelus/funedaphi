@@ -19,6 +19,8 @@
     <require file="move.xml"/>
     <require file="travel.xml"/>
     
+    <require file="use.xml"/>
+    
     <!-- entities -->
     <require file="human.xml"/>
     
