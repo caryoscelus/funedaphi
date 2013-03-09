@@ -4,12 +4,20 @@
         <value in="human" out="@"/>
         <value in="floor" out="."/>
         <value in="portal" out="*"/>
+        <value in="wall" out="#"/>
+    </map>
+    
+    <map source="class" target="color">
+        <value in="wall" out="black"/>
+    </map>
+    <map source="class" target="visual-effect">
+        <value in="portal" out="bold"/>
+        <value in="wall" out="bold"/>
     </map>
     
     <map source="control" target="visual-effect">
         <value in="player" out="reverse"/>
     </map>
-    
     <map source="control" target="color">
         <value in="player" out="white"/>
     </map>
