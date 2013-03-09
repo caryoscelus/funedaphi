@@ -18,6 +18,9 @@
     <require file="suicide.xml"/>
     <require file="move.xml"/>
     
+    <!-- entities -->
+    <require file="human.xml"/>
+    
     <!-- startup -->
     <require file="startup.xml"/>
 </mod>

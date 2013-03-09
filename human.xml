@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <action name="make-human">
+        <code>
+def makeHuman():
+    human = Entity({
+                'class':'human',
+                'hp':10, 'maxHp':10,
+                'strength':4,
+                'agility':4,
+                'hungry':0, 'maxHungry':5
+                },
+                {'weapon':None, 'inv':[]},
+                ['weapon', 'inv'])
+    return human
+
+_return = makeHuman()
+        </code>
+    </action>
+</mod>

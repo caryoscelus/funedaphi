@@ -3,15 +3,12 @@
     <action name="startup">
         <code>
 def startup():
-    human = Entity({'class':'human', 'hp':10, 'hungry':0, 'maxHungry':5},
-                {'weapon':None, 'inv':[]},
-                ['weapon', 'inv'])
-    
+    human = action('make-human', {})
     human.alive = True
     
     map0 = action('newmap', {'mapType':'test'})
-    
     map0.setAlive()
+    
     spawn = map0.attr('centre')
     map0.putOn(spawn[0], spawn[1], 'monster', human)
     

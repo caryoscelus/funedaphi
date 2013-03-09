@@ -2,5 +2,7 @@
 <mod>
     <display>
         <attr name="hp"/>
+        <attr name="maxHp"/>
+        <attr name="strength"/>
     </display>
 </mod>
