@@ -17,9 +17,13 @@
     <require file="die.xml"/>
     <require file="suicide.xml"/>
     <require file="move.xml"/>
+    <require file="travel.xml"/>
     
     <!-- entities -->
     <require file="human.xml"/>
+    
+    <!-- features -->
+    <require file="portal.xml"/>
     
     <!-- startup -->
     <require file="startup.xml"/>

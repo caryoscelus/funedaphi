@@ -6,7 +6,7 @@ def startup():
     human = action('make-human', {})
     human.alive = True
     
-    map0 = action('newmap', {'mapType':'test'})
+    map0 = action('newmap', {'mapType':'test-'})
     map0.setAlive()
     
     spawn = map0.attr('centre')

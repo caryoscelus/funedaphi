@@ -5,7 +5,7 @@
         
         <code>
 def newmap(mapType):
-    mapId = getEmptyMapId('{0}-'.format(mapType))
+    mapId = getEmptyMapId(mapType)
     newMap = getMap(mapId)
     newMap.notifyEmpty()
     return newMap

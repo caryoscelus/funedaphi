@@ -3,6 +3,7 @@
     <map source="class" target="char">
         <value in="human" out="@"/>
         <value in="floor" out="."/>
+        <value in="portal" out="*"/>
     </map>
     
     <map source="control" target="visual-effect">

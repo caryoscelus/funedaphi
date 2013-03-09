@@ -8,13 +8,24 @@
 def generateTest(newmap):
     width, height = 16, 16
     newmap.resize(width, height)
+    
     # fill with floor
     for x in range(width):
         for y in range(height):
             newmap.createEntity({'class':'floor'}, x, y, 'ground')
-    newmap.setExist(True)
+    
+    # put portal
+    px = int(random()*(width/2)+width/4)
+    py = int(random()*(height/2)+height/4)
+    
+    portal = action('make-portal', {'mapType':'test', 'x':-1, 'y':-1})
+    
+    newmap.putOn(px, py, 'feature', portal)
+    
     newmap.setAttr('centre', (8, 8))
-    info('test map generated')
+    
+    newmap.setExist(True)
+    
     return True
 
 _return = generateTest(newmap)

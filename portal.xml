@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <action name="make-portal">
+        <!-- use x=-1, y=-1 to determine them dynamically -->
+        <!-- don't specify mapId to make portal to new map -->
+        <string name="mapId"/>
+        <string name="mapType"/>
+        <integer name="x"/>
+        <integer name="y"/>
+        
+        <code>
+def makePortal(mapId = '', mapType = '', x = 0, y = 0):
+    if not mapId:
+        mapId = getEmptyMapId(mapType)
+    portal = Entity({'class':'portal', 'targetMap':mapId, 'tx':x, 'ty':y})
+    return portal
+
+_return = makePortal(mapId, mapType, x, y)
+        </code>
+    </action>
+    
+    <action name="use-portal">
+        <object name="portal"/>
+        <object name="subject"/>
+        <code>
+def usePortal(portal, subject):
+    mapId = portal.attr('targetMap')
+    newMap = getMap(mapId)
+    tx, ty = portal.attr('tx'), portal.attr('ty')
+    if tx &lt; 0 or ty &lt; 0:
+        tx, ty = newMap.attr('centre')
+    return action('travel', {'subject':subject, 'mapId':mapId, 'x':tx, 'y':ty})
+
+_return = usePortal(portal, subject)
+        </code>
+    </action>
+</mod>
