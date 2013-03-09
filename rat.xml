@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <map source="ratType" target="maxHp" type="integer">
+        <value in="white" out="6"/>
+        <value in="grey" out="7"/>
+        <value in="toxic" out="9"/>
+    </map>
+    
+    <action name="make-rat">
+        <string name="ratType"/>
+        <code>
+def makeRat(ratType):
+    if not ratType:
+        ratType = choice(['white', 'grey', 'toxic'])
+    rat = Entity({
+                'class':'rat',
+                'ratType':ratType,
+                'strength':2,
+                'agility':2,
+                'hungry':0, 'maxHungry':5
+                })
+    return rat
+
+_return = makeRat(ratType)
+        </code>
+    </action>
+</mod>

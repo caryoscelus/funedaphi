@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mod>
+    <!-- class gfx -->
     <map source="class" target="char">
         <value in="human" out="@"/>
+        <value in="rat" out="r"/>
+        
         <value in="floor" out="."/>
         <value in="portal" out="*"/>
         <value in="wall" out="#"/>
     </map>
     
+    
+    <!-- class colors & effects -->
     <map source="class" target="color">
         <value in="wall" out="black"/>
     </map>
@@ -15,6 +20,19 @@
         <value in="wall" out="bold"/>
     </map>
     
+    <!-- subclass colors & effects -->
+    <map source="ratType" target="color">
+        <value in="white" out="white"/>
+        <value in="grey" out="white"/>
+        <value in="toxic" out="yellow"/>
+    </map>
+    <map source="ratType" target="visual-effect">
+        <value in="white" out="bold"/>
+        <value in="toxic" out="bold"/>
+    </map>
+    
+    
+    <!-- player colors & effects -->
     <map source="control" target="visual-effect">
         <value in="player" out="reverse"/>
     </map>

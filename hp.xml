@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <map source="maxHp" target="hp" source-type="integer" type="integer">
+        <copy value="value"/>
+    </map>
+</mod>

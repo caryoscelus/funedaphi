@@ -21,8 +21,12 @@
     
     <require file="use.xml"/>
     
+    <!-- attributes -->
+    <require file="hp.xml"/>
+    
     <!-- entities -->
     <require file="human.xml"/>
+    <require file="rat.xml"/>
     
     <!-- features -->
     <require file="portal.xml"/>
