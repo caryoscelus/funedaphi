@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <action name="startup">
+        <code>
+human = Entity({'class':'human', 'hp':10, 'hungry':0, 'maxHungry':5},
+               {'weapon':None, 'inv':[]},
+               ['weapon', 'inv'])
+
+human.alive = True
+
+map0 = getMap(0)
+map0.notifyEmpty()
+map0.setAlive()
+spawn = map0.attr('centre')
+map0.putOn(spawn[0], spawn[1], 'monster', human)
+
+_return = human
+        </code>
+    </action>
+</mod>

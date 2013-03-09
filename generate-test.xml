@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <!-- This map generator is fore testing only -->
+    <action name="generate-test">
+        <object name="newmap"/>
+        
+        <code>
+def generateTest(newmap):
+    width, height = 16, 16
+    newmap.resize(width, height)
+    # fill with floor
+    for x in range(width):
+        for y in range(height):
+            newmap.createEntity({'class':'floor'}, x, y, 'ground')
+    newmap.setExist(True)
+    newmap.setAttr('centre', (8, 8))
+    info('test map generated')
+    return True
+
+_return = generateTest(newmap)
+        </code>
+    </action>
+</mod>

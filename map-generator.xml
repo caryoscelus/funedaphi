@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <!-- This map generator only chooses which kind of map to generate -->
+    <bind action="map-generator" target="map" event="empty">
+        <newmap value="target"/>
+    </bind>
+    
+    <action name="map-generator">
+        <object name="newmap"/>
+        
+        <code>
+def mapGenerator(newmap):
+    MAP_TYPES = [
+        'test',
+        'airship',
+    ]
+    MAP_MAX = 0x10000
+
+    #export(MAP_TYPES)
+    #export(MAP_MAX)
+
+    def idToType(mapId):
+        t = mapId // MAP_MAX
+        try:
+            return MAP_TYPES[t]
+        except IndexError:
+            warning('Unknown map type: {0}'.format(t))
+            return MAP_TYPES[0]
+
+    actionName = 'generate-{0}'.format(idToType(newmap.attr('id')))
+    return action(actionName, {'newmap':newmap})
+
+_return = mapGenerator(newmap)
+        </code>
+    </action>
+</mod>
