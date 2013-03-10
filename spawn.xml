@@ -32,6 +32,7 @@ def makeSpawn(spawn, position, probability):
             for xy in xys:
                 try:
                     entity.onMap.putOn(xy[0], xy[1], position, spawned)
+                    return
                 except TiledMapSizeError:
                     pass
                 except PositionTakenError:
