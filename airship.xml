@@ -29,9 +29,13 @@ def generateAirship(newmap):
             newmap.putOn(x0, y, 'ground', Entity({'class':'wall'}))
             newmap.putOn(x1, y, 'ground', Entity({'class':'wall'}))
             if ox[0] != -1 and ox[0] != x0:
-                newmap.putOn(ox[0], y, 'ground', Entity({'class':'wall'}))
+                tr = range(ox[0], x0) if ox[0] &lt; x0 else range(x0+1, ox[0]+1)
+                for r in tr:
+                    newmap.putOn(r, y, 'ground', Entity({'class':'wall'}))
             if ox[1] != -1 and ox[1] != x1:
-                newmap.putOn(ox[1], y, 'ground', Entity({'class':'wall'}))
+                tr = range(ox[1], x1) if ox[1] &lt; x1 else range(x1+1, ox[1]+1)
+                for r in tr:
+                    newmap.putOn(r, y, 'ground', Entity({'class':'wall'}))
         except TiledMapSizeError:
             warning('can\'t place!')
     
