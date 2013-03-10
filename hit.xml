@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <action name="hit">
+        <object name="subject"/>
+        <object name="target"/>
+        <integer name="amount"/>
+        
+        <code>
+def hit(subject, target, amount):
+    target.changeNumericAttr('hp', -amount)
+    return True
+
+_return = hit(subject, target, amount)
+        </code>
+    </action>
+</mod>

@@ -18,9 +18,11 @@
     <require file="die.xml"/>
     <require file="suicide.xml"/>
     <require file="move.xml"/>
-    <require file="travel.xml"/>
+    <require file="fight.xml"/>
     
+    <require file="travel.xml"/>
     <require file="use.xml"/>
+    <require file="hit.xml"/>
     
     <!-- attributes -->
     <require file="hp.xml"/>

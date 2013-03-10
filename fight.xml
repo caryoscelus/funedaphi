@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <action name="fight">
+        <object name="subject"/>
+        <integer name="target"/>
+        
+        <code>
+def fight(subject, target):
+    x, y = UnDirect(target)
+    victim = subject.getTile(x, y).get('monster')
+    if not victim:
+        info('no victim to fight with')
+        return False
+    
+    try:
+        weapon = subject.get('weapon')
+    except PositionNameError:
+        weapon = False
+    probability = 0
+    if not weapon:
+        wmsg = 'bare-handed'
+        probability = 0.3
+        hit = 1
+    else:
+        wmsg = 'with {0}'.format(weapon.attr('class'))
+        probability = 0.6
+        hit = 2
+    if random() &lt; probability:
+        info('{0} hits {1} {2}'.format(subject.attr('class'), victim.attr('class'), wmsg))
+        action('hit', {'subject':subject, 'target':victim, 'amount':hit})
+    else:
+        info('{0} misses {1}'.format(subject.attr('class'), victim.attr('class')))
+    return True
+
+_return = fight(subject, target)
+        </code>
+    </action>
+</mod>
