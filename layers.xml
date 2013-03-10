@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mod>
     <layers>
+        <layer name="system" type="list"/>
         <layer name="ground" type="object"/>
         <layer name="feature" type="object"/>
         <layer name="objects" type="list"/>

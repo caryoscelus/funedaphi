@@ -32,6 +32,9 @@
     <!-- features -->
     <require file="portal.xml"/>
     
+    <!-- environment -->
+    <require file="spawn.xml"/>
+    
     <!-- startup -->
     <require file="startup.xml"/>
 </mod>

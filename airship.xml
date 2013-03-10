@@ -48,6 +48,10 @@ def generateAirship(newmap):
     newmap.setAttr('centre', (cx, cy))
     newmap.setExist(True)
     
+    
+    x, y = cx-1, cy-1
+    newmap.putOn(x, y, 'system', action('make-spawn', {'spawn':'rat-spawn', 'position':'monster', 'probability':1/1}))
+    
     info('new airship')
     
     return True

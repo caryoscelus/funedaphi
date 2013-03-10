@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <action name="make-spawn">
+        <string name="spawn"/>
+        <string name="position"/>
+        <number name="probability"/>
+        <code>
+def makeSpawn(spawn, position, probability):
+    class SpawnController:
+        def __init__(self, spfunc, probability = 1/32):
+            super().__init__()
+            self.spfunc = spfunc
+            self.probability = probability
+            self.d = (5, 5)
+        
+        def live(self, entity):
+            if self.wantSpawn():
+                self.spawn(entity)
+        
+        def wantSpawn(self):
+            return random() &lt; self.probability
+        
+        def spawn(self, entity):
+            spawned = Entity(self.spfunc())
+            
+            position = entity.attr('spawn-position')
+            x0, y0 = entity.getCoord()
+            dx, dy = self.d
+            xys = [(x, y) for x in range(x0-dx, x0+dx+1) for y in range(y0-dy, y0+dy+1)]
+            shuffle(xys)
+            
+            for xy in xys:
+                try:
+                    entity.onMap.putOn(xy[0], xy[1], position, spawned)
+                except TiledMapSizeError:
+                    pass
+                except PositionTakenError:
+                    pass
+            else:
+                warning('can\'t spawn')
+    
+    spfunc = lambda: action(spawn, {})
+    spc = SpawnController(spfunc, probability)
+    spe = Entity({'class':'spawn', 'spawn-position':position}, alive=True, handler=spc)
+    return spe
+
+_return = makeSpawn(spawn, position, probability)
+        </code>
+    </action>
+</mod>
