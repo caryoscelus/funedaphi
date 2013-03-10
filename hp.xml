@@ -3,4 +3,22 @@
     <map source="maxHp" target="hp" source-type="integer" type="integer">
         <copy value="value"/>
     </map>
+    
+    <bind action="hp-check" target="entity" event="attrib" attrib="hp">
+        <subject value="target"/>
+    </bind>
+    
+    <action name="hp-check">
+        <object name="subject"/>
+        
+        <code>
+def hpCheck(subject):
+    hp = subject.attr('hp')
+    if hp &lt;= 0:
+        action('die', {'subject':subject, 'reason':'hp = {0}'.format(hp)})
+    return True
+
+_return = hpCheck(subject)
+        </code>
+    </action>
 </mod>
