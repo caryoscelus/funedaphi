@@ -13,15 +13,21 @@ def generateAirship(newmap):
     cx = int(width/2)
     cy = int(height/2)
     
+    x0, x1 = -1, -1
+    
     # make ship outline
     for y in range(height):
         dx = width/height * math.sqrt((height/4+width/4)**2-(y-height/2)**2*width/height)
-        x1 = int(cx + dx)
-        x2 = int(cx - dx)
-        debug('COORD: {0}'.format((x2, y)))
+        ox = [x0, x1]
+        x0 = int(cx + dx)
+        x1 = int(cx - dx)
         try:
+            newmap.putOn(x0, y, 'ground', Entity({'class':'wall'}))
             newmap.putOn(x1, y, 'ground', Entity({'class':'wall'}))
-            newmap.putOn(x2, y, 'ground', Entity({'class':'wall'}))
+            if ox[0] != -1 and ox[0] != x0:
+                newmap.putOn(ox[0], y, 'ground', Entity({'class':'wall'}))
+            if ox[1] != -1 and ox[1] != x1:
+                newmap.putOn(ox[1], y, 'ground', Entity({'class':'wall'}))
         except TiledMapSizeError:
             warning('can\'t place!')
     
