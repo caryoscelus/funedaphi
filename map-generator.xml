@@ -19,4 +19,34 @@ def mapGenerator(newmap):
 _return = mapGenerator(newmap)
         </code>
     </action>
+    
+    <action name="map-fill-area">
+        <object name="self"/>
+        <string name="position"/>
+        <string name="fill"/>
+        <string name="limit"/>
+        <integer name="x"/>
+        <integer name="y"/>
+        <code>
+def fillArea(self, position, fill, limit, x, y):
+    def fillFunc(self, position, fill, limit, x, y):
+        cc = self.getContent(x, y, position)
+        if cc and cc.attr('class') == limit:
+            return False
+        
+        try:
+            self.createEntity({'class':fill}, x, y, position)
+        except PositionTakenError:
+            warning('tile taken')
+        
+        return True
+    
+    def getFillFunc(self, position, fill, limit):
+        return lambda x, y: fillFunc(self, position, fill, limit, x, y)
+    
+    self.floodfill(x, y, getFillFunc(self, position, fill, limit))
+
+_return = fillArea(self, position, fill, limit, x, y)
+        </code>
+    </action>
 </mod>

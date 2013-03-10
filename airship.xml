@@ -15,12 +15,16 @@ def generateAirship(newmap):
     
     x0, x1 = -1, -1
     
-    # make ship outline
-    for y in range(height):
+    def getEclispseX(y, width, height):
         dx = width/height * math.sqrt((height/4+width/4)**2-(y-height/2)**2*width/height)
-        ox = [x0, x1]
         x0 = int(cx + dx)
         x1 = int(cx - dx)
+        return x0, x1
+    
+    # make ship outline
+    for y in range(height):
+        ox = [x0, x1]
+        x0, x1 = getEclispseX(y, width, height)
         try:
             newmap.putOn(x0, y, 'ground', Entity({'class':'wall'}))
             newmap.putOn(x1, y, 'ground', Entity({'class':'wall'}))
@@ -31,7 +35,12 @@ def generateAirship(newmap):
         except TiledMapSizeError:
             warning('can\'t place!')
     
-    #action('map-fill-area', {'position':'ground', 'fill':'floor', 'limit':'wall', 'x':cx, 'y':cy})
+    y = 0
+    x0, x1 = getEclispseX(y, width, height)
+    
+    
+    
+    action('map-fill-area', {'self':newmap, 'position':'ground', 'fill':'floor', 'limit':'wall', 'x':cx, 'y':cy})
     newmap.setAttr('centre', (cx, cy))
     newmap.setExist(True)
     
