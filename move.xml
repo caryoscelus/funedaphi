@@ -26,6 +26,8 @@ def move(subject, dx, dy):
     except TiledMapSizeError:
         warning('trying to step out of the map')
         return False
+    subject.changeNumericAttr('hp', +1/16)
+    
     return True
 
 _return = move(subject, dx, dy)

@@ -5,7 +5,7 @@
         
         <code>
 def main(subject):
-    subject.changeNumericAttr('hp', 0.1)
+    subject.changeNumericAttr('hp', +1/8)
     return True
 
 _return = main(subject)

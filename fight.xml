@@ -12,6 +12,8 @@ def fight(subject, target):
         info('no victim to fight with')
         return False
     
+    subject.changeNumericAttr('hp', +1/32)
+    
     try:
         weapon = subject.get('weapon')
     except PositionNameError:
