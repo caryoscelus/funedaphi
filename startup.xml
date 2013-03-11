@@ -3,7 +3,11 @@
     <action name="startup">
         <code>
 def startup():
-    human = action('make-human', {})
+    # init everything
+    action('init-human', {})
+    
+    makeHuman = vimport('makeHuman')
+    human = makeHuman()
     human.alive = True
     
     map0 = action('newmap', {'mapType':'airship-'})

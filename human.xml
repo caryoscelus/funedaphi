@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mod>
-    <action name="make-human">
+    <action name="init-human">
         <code>
 def makeHuman():
     human = Entity({
@@ -14,7 +14,9 @@ def makeHuman():
                 ['weapon', 'inv'])
     return human
 
-_return = makeHuman()
+vexport('makeHuman', makeHuman)
+
+_return = True
         </code>
     </action>
 </mod>
