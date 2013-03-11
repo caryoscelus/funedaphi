@@ -4,6 +4,7 @@
         <attr name="hp"/>
         <attr name="maxHp"/>
         <attr name="strength"/>
-        <attr name="exp"/>
+        <attr name="xp"/>
+        <attr name="lvl"/>
     </display>
 </mod>

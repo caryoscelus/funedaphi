@@ -30,6 +30,7 @@
     
     <!-- attributes -->
     <require file="hp.xml"/>
+    <require file="xp.xml"/>
     
     <!-- entities -->
     <require file="human.xml"/>

@@ -32,7 +32,7 @@ def fight(subject, target):
             victim.check()
         except BaseEntityDeadError:
             # TODO: move somewhere else
-            subject.changeNumericAttr('exp', +1)
+            subject.changeNumericAttr('xp', +1)
     
     else:
         info('{0} misses {1}'.format(subject.attr('class'), victim.attr('class')))
