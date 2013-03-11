@@ -14,8 +14,15 @@ def startup():
     map0 = action('newmap', {'mapType':'airship-'})
     map0.setAlive()
     
-    spawn = map0.attr('centre')
-    map0.putOn(spawn[0], spawn[1], 'monster', human)
+    sx, sy = map0.attr('centre')
+    map0.putOn(sx, sy, 'monster', human)
+    
+    
+    # spawn some rats from the start
+    # TODO: replace with something better
+    ratSpawn = map0.getContent(sx, sy, 'system')[0]
+    for i in range(256):
+        ratSpawn.live()
     
     return human
 
