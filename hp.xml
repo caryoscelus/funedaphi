@@ -18,7 +18,7 @@ def hpCheck(subject):
         action('die', {'subject':subject, 'reason':'hp = {0}'.format(hp)})
     maxHp = subject.attr('maxHp')
     if hp &gt; maxHp:
-        subject.setAttr('hp', 'maxHp')
+        subject.setAttr('hp', maxHp)
     return True
 
 _return = hpCheck(subject)
