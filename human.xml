@@ -6,6 +6,7 @@ def makeHuman():
     human = Entity({
                 'class':'human',
                 'maxHp':10,
+                'exp':0,
                 'strength':4,
                 'agility':4,
                 'hungry':0, 'maxHungry':5

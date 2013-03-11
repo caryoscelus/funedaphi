@@ -28,6 +28,12 @@ def fight(subject, target):
     if random() &lt; probability:
         info('{0} hits {1} {2}'.format(subject.attr('class'), victim.attr('class'), wmsg))
         action('hit', {'subject':subject, 'target':victim, 'amount':hit})
+        try:
+            victim.check()
+        except BaseEntityDeadError:
+            # TODO: move somewhere else
+            subject.changeNumericAttr('exp', +1)
+    
     else:
         info('{0} misses {1}'.format(subject.attr('class'), victim.attr('class')))
     return True
