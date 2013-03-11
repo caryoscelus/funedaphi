@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <action name="wait">
+        <object name="subject"/>
+        
+        <code>
+def main(subject):
+    subject.changeNumericAttr('hp', 0.1)
+    return True
+
+_return = main(subject)
+        </code>
+    </action>
+</mod>

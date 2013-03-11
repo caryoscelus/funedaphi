@@ -17,5 +17,9 @@
             <arg name="target" value="direction"/>
             <bind key="F"/>
         </action>
+        <action name="wait">
+            <arg name="subject" value="entity"/>
+            <bind key="."/>
+        </action>
     </keymap>
 </mod>
