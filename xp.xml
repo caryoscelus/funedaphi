@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod>
+    <bind action="xp-check" target="entity" event="attrib" attrib="xp">
+        <subject value="target"/>
+    </bind>
+    
+    <action name="levelup">
+        <object name="subject"/>
+        
+        <code>
+def levelup(subject):
+    maxHp = subject.attr('maxHp')
+    debug(type(maxHp))
+    maxHp *= 1.5
+    subject.setAttr('maxHp', maxHp)
+    subject.changeNumericAttr('lvl', +1)
+    info('{0} leveluped!'.format(subject.attr['class']))
+
+_return = levelup(subject)
+        </code>
+    </action>
+    
+    <action name="xp-check">
+        <object name="subject"/>
+        
+        <code>
+def xpCheck(subject):
+    xp = subject.attr('xp')
+    lvl = subject.attr('lvl')
+    if not lvl:
+        lvl = 0
+    if xp &gt; 2**lvl:
+        action('levelup', {'subject':subject})
+    return True
+
+_return = xpCheck(subject)
+        </code>
+    </action>
+</mod>
