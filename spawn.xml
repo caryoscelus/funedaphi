@@ -31,14 +31,18 @@ def makeSpawn(spawn, position, probability):
             
             for xy in xys:
                 try:
-                    entity.onMap.putOn(xy[0], xy[1], position, spawned)
-                    return
+                    ground = entity.onMap.getContent(xy[0], xy[1], 'ground')
                 except TiledMapSizeError:
                     pass
-                except PositionTakenError:
-                    pass
-            else:
-                warning('can\'t spawn')
+                else:
+                    if ground and ground.attr('standable'):
+                        try:
+                            entity.onMap.putOn(xy[0], xy[1], position, spawned)
+                            return
+                        except PositionTakenError:
+                            pass
+            
+            warning('can\'t spawn')
     
     spfunc = lambda: action(spawn, {})
     spc = SpawnController(spfunc, probability)
