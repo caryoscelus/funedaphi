@@ -10,6 +10,8 @@
         <string name="ratType"/>
         <code>
 def makeRat(ratType):
+    Bot0 = vimport('Bot0')
+    
     if not ratType:
         ratType = choice(['white', 'grey', 'toxic'])
     rat = Entity({
@@ -18,7 +20,7 @@ def makeRat(ratType):
                 'strength':2,
                 'agility':2,
                 'hungry':0, 'maxHungry':5
-                })
+                }, alive=True, handler=Bot0())
     return rat
 
 _return = makeRat(ratType)

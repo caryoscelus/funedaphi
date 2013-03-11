@@ -5,6 +5,7 @@
 def startup():
     # init everything
     action('init-human', {})
+    action('init-bot0', {})
     
     makeHuman = vimport('makeHuman')
     human = makeHuman()

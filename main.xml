@@ -40,6 +40,9 @@
     <!-- environment -->
     <require file="spawn.xml"/>
     
+    <!-- bots -->
+    <require file="bot0.xml"/>
+    
     <!-- startup -->
     <require file="startup.xml"/>
 </mod>
