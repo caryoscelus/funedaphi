@@ -53,19 +53,18 @@ def main():
             # moving to me now
             dx = me[0]-x
             dy = me[1]-y
-            debug('{0}, {1}'.format(dx, dy))
             sx, sy = int(math.copysign(1, dx)), int(math.copysign(1, dy))
             if dx and dy:
                 if self.tryMove(entity, sx, sy):
                     return True
                 if dy &gt; dx:
-                    if self.tryMove(entity, 0, dy):
+                    if self.tryMove(entity, 0, sy):
                         return True
             
-            if dx and self.tryMove(entity, dx, 0):
+            if dx and self.tryMove(entity, sx, 0):
                 return True
             
-            return self.tryMove(entity, 0, dy)
+            return self.tryMove(entity, 0, sy)
         
         def tryMove(self, entity, dx, dy):
             t = entity.getTile(dx, dy)
