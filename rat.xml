@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mod>
     <map source="ratType" target="maxHp" type="integer">
-        <value in="white" out="6"/>
-        <value in="grey" out="7"/>
-        <value in="toxic" out="9"/>
+        <value in="white" out="3"/>
+        <value in="grey" out="4"/>
+        <value in="toxic" out="6"/>
     </map>
     
     <action name="make-rat">
