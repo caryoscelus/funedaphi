@@ -24,20 +24,4 @@ def makeRat(ratType):
 _return = makeRat(ratType)
         </code>
     </action>
-    
-    <action name="rat-spawn">
-        <code>
-def ratSpawn():
-    ratType = choice(['white', 'grey', 'toxic'])
-    return {
-            'class':'rat',
-            'ratType':ratType,
-            'strength':2,
-            'agility':2,
-            'hungry':0, 'maxHungry':5
-    }
-
-_return = ratSpawn()
-        </code>
-    </action>
 </mod>

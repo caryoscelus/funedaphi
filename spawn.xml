@@ -21,7 +21,7 @@ def makeSpawn(spawn, position, probability):
             return random() &lt; self.probability
         
         def spawn(self, entity):
-            spawned = Entity(self.spfunc())
+            spawned = self.spfunc()
             
             position = entity.attr('spawn-position')
             x0, y0 = entity.getCoord()
