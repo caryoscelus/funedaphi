@@ -50,7 +50,7 @@ def generateAirship(newmap):
     
     
     x, y = cx, cy
-    newmap.putOn(x, y, 'system', action('make-spawn', {'spawn':'make-rat', 'position':'monster', 'probability':1/32}))
+    newmap.putOn(x, y, 'system', action('make-spawn', {'spawn':'make-rat', 'position':'monster', 'probability':1/16}))
     
     info('new airship')
     

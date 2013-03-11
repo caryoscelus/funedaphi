@@ -11,7 +11,7 @@ def makeSpawn(spawn, position, probability):
             super().__init__()
             self.spfunc = spfunc
             self.probability = probability
-            self.d = (5, 5)
+            self.d = (32, 32)
         
         def live(self, entity):
             if self.wantSpawn():
