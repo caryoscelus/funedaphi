@@ -8,6 +8,7 @@
         <value in="floor" out="."/>
         <value in="portal" out="*"/>
         <value in="wall" out="#"/>
+        <value in="door" out="+"/>
     </map>
     
     
