@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mod>
     <display>
-        <attr name="hp"/>
-        <attr name="maxHp"/>
-        <attr name="strength"/>
-        <attr name="xp"/>
-        <attr name="lvl"/>
+        <attr name="hp" type="integer"/>
+        <attr name="maxHp" type="integer"/>
+        <attr name="strength" type="integer"/>
+        <attr name="xp" type="integer"/>
+        <attr name="lvl" type="integer"/>
     </display>
 </mod>
