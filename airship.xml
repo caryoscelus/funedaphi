@@ -49,10 +49,84 @@ def generateAirship(newmap):
     newmap.setExist(True)
     
     
-    x, y = cx, cy
-    newmap.putOn(x, y, 'system', action('make-spawn', {'spawn':'make-rat', 'position':'monster', 'probability':1/16}))
+    # make some rooms
+    def makeRoom(rlist):
+        x0, y0 = choice(range(width)), choice(range(height))
+        lesser = [(sx1, sy1) for (sx0, sy0), (sx1, sy1), n in rlist if sx0 &lt;= x0 and sy0 &lt;= y0]
+        contain = [True for (sx1, sy1) in lesser if sx1 &gt; x0 and sy1 &gt; y0]
+        if contain:
+            return False
+        
+        greater = [(sx0, sy0) for (sx0, sy0), (sx1, sy1), n in rlist
+                    if sx0 &gt; x0 and sy1 &gt; y0 or
+                       sx1 &gt; x0 and sy0 &gt; y0
+        ]
+        if not greater:
+            xm, ym = width, height
+        else:
+            xm = min(greater, key=lambda xy: xy[0])[0]
+            ym = min(greater, key=lambda xy: xy[1])[1]
+        if xm &lt;= x0+1 or ym &lt;= y0+1:
+            return False
+        x1 = choice(range(x0+1, xm))
+        y1 = choice(range(y0+1, ym))
+        
+        debug('wtf?!')
+        if choice((True, False)):
+            if choice((True, False)):
+                yd = y0
+            else:
+                yd = y1
+            xd = choice(range(x0, x1))
+        else:
+            if choice((True, False)):
+                xd = x0
+            else:
+                xd = x1
+            yd = choice(range(y0, y1))
+        
+        rlist.append(((x0, y0), (x1, y1), (xd, yd)))
+        
+        return True
     
-    info('new airship')
+    def putWall(x, y):
+        newmap.setContent(x, y, 'ground', Entity({'class':'wall'}))
+    
+    def drawWall(p0, p1):
+        if p0[0] == p1[0]:
+            x = p0[0]
+            for y in range(p0[1], p1[1]):
+                putWall(x, y)
+        elif p0[1] == p1[1]:
+            y = p0[1]
+            for x in range(p0[0], p1[0]):
+                putWall(x, y)
+        else:
+            raise RuntimeError('diag walls are not supported')
+    
+    roomNumber = choice(range(4, 8))
+    rooms = []
+    maxTries = 8*roomNumber
+    while roomNumber &gt; 0 and maxTries &gt; 0:
+        if makeRoom(rooms):
+            roomNumber -= 1
+        maxTries -= 1
+    
+    for room in rooms:
+        x0, y0 = room[0]
+        x1, y1 = room[1]
+        drawWall((x0, y0), (x1, y0))
+        drawWall((x0, y1-1), (x1, y1-1))
+        drawWall((x0, y0), (x0, y1))
+        drawWall((x1-1, y0), (x1-1, y1))
+        
+        # door
+        xd, yd = room[2]
+        newmap.setContent(xd, yd, 'ground', Entity({'class':'door'}))
+    
+    x, y = cx, cy
+    # rats
+    newmap.putOn(x, y, 'system', action('make-spawn', {'spawn':'make-rat', 'position':'monster', 'probability':1/16}))
     
     return True
 
