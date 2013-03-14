@@ -14,6 +14,10 @@ def levelup(subject):
     maxHp *= 1.5
     subject.setAttr('maxHp', maxHp)
     subject.changeNumericAttr('lvl', +1)
+    if random() &lt; 0.5:
+        subject.changeNumericAttr('strength', +1)
+    else:
+        subject.changeNumericAttr('agility', +1)
     info('{0} leveluped!'.format(subject.attr['class']))
 
 _return = levelup(subject)

@@ -6,6 +6,18 @@
         <value in="toxic" out="6"/>
     </map>
     
+    <map source="ratType" target="strength" type="integer">
+        <value in="white" out="3"/>
+        <value in="grey" out="4"/>
+        <value in="toxic" out="8"/>
+    </map>
+    
+    <map source="ratType" target="agility" type="integer">
+        <value in="white" out="6"/>
+        <value in="grey" out="8"/>
+        <value in="toxic" out="5"/>
+    </map>
+    
     <action name="make-rat">
         <string name="ratType"/>
         <code>

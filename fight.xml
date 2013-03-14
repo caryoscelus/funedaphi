@@ -18,7 +18,7 @@ def fight(subject, target):
         weapon = subject.get('weapon')
     except PositionNameError:
         weapon = False
-    probability = 0
+    
     if not weapon:
         wmsg = 'bare-handed'
         probability = 0.3
@@ -27,6 +27,13 @@ def fight(subject, target):
         wmsg = 'with {0}'.format(weapon.attr('class'))
         probability = 0.6
         hit = 2
+    
+    strength = subject.attr('strength')
+    agility = subject.attr('agility')
+    
+    hit *= strength/4
+    probability *= agility/4
+    
     if random() &lt; probability:
         info('{0} hits {1} {2}'.format(subject.attr('class'), victim.attr('class'), wmsg))
         action('hit', {'subject':subject, 'target':victim, 'amount':hit})

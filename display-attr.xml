@@ -4,6 +4,7 @@
         <attr name="hp" type="integer"/>
         <attr name="maxHp" type="integer"/>
         <attr name="strength" type="integer"/>
+        <attr name="agility" type="integer"/>
         <attr name="xp" type="integer"/>
         <attr name="lvl" type="integer"/>
     </display>

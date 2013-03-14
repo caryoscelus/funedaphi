@@ -3,7 +3,7 @@
     <action name="hit">
         <object name="subject"/>
         <object name="target"/>
-        <integer name="amount"/>
+        <number name="amount"/>
         
         <code>
 def hit(subject, target, amount):
